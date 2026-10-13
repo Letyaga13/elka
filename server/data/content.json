@@ -1,0 +1,364 @@
+[
+  {
+    "id": "m1",
+    "type": "movie",
+    "title": "Один дома",
+    "year": 1990,
+    "moods": ["funny", "family", "nostalgic"],
+    "tags": ["christmas", "comedy"],
+    "url": "https://www.w3schools.com/html/mov_bbb.mp4"
+  },
+  {
+    "id": "m2",
+    "type": "movie",
+    "title": "Гринч — похититель Рождества",
+    "year": 2000,
+    "moods": ["funny", "family"],
+    "tags": ["christmas"],
+    "url": "https://www.w3schools.com/html/mov_bbb.mp4"
+  },
+  {
+    "id": "m3",
+    "type": "movie",
+    "title": "Полярный экспресс",
+    "year": 2004,
+    "moods": ["cozy", "family", "nostalgic"],
+    "tags": ["christmas", "animation"],
+    "url": "https://www.w3schools.com/html/mov_bbb.mp4"
+  },
+  {
+    "id": "m4",
+    "type": "movie",
+    "title": "Реальная любовь",
+    "year": 2003,
+    "moods": ["romantic", "cozy"],
+    "tags": ["christmas", "romance"],
+    "url": "https://www.w3schools.com/html/mov_bbb.mp4"
+  },
+  {
+    "id": "m5",
+    "type": "movie",
+    "title": "Эльф",
+    "year": 2003,
+    "moods": ["funny", "family"],
+    "tags": ["christmas", "comedy"],
+    "url": "https://www.w3schools.com/html/mov_bbb.mp4"
+  },
+  {
+    "id": "m6",
+    "type": "movie",
+    "title": "Эта замечательная жизнь",
+    "year": 1946,
+    "moods": ["nostalgic", "cozy"],
+    "tags": ["classic", "christmas"],
+    "url": "https://www.w3schools.com/html/mov_bbb.mp4"
+  },
+  {
+    "id": "m7",
+    "type": "movie",
+    "title": "Рождественская история",
+    "year": 2009,
+    "moods": ["cozy", "family"],
+    "tags": ["christmas", "animation"],
+    "url": "https://www.w3schools.com/html/mov_bbb.mp4"
+  },
+  {
+    "id": "m8",
+    "type": "movie",
+    "title": "Отпуск по обмену",
+    "year": 2006,
+    "moods": ["romantic", "cozy"],
+    "tags": ["christmas", "romance"],
+    "url": "https://www.w3schools.com/html/mov_bbb.mp4"
+  },
+  {
+    "id": "m9",
+    "type": "movie",
+    "title": "Чудо на 34-й улице",
+    "year": 1994,
+    "moods": ["family", "nostalgic"],
+    "tags": ["christmas", "classic"],
+    "url": "https://www.w3schools.com/html/mov_bbb.mp4"
+  },
+  {
+    "id": "m10",
+    "type": "movie",
+    "title": "Снеговик-почтовик",
+    "year": 1955,
+    "moods": ["nostalgic", "family"],
+    "tags": ["soviet", "animation"],
+    "url": "https://www.w3schools.com/html/mov_bbb.mp4"
+  },
+  {
+    "id": "m11",
+    "type": "movie",
+    "title": "Карнавальная ночь",
+    "year": 1956,
+    "moods": ["nostalgic", "funny"],
+    "tags": ["soviet", "classic"],
+    "url": "https://www.w3schools.com/html/mov_bbb.mp4"
+  },
+  {
+    "id": "m12",
+    "type": "movie",
+    "title": "Ирония судьбы",
+    "year": 1975,
+    "moods": ["nostalgic", "romantic"],
+    "tags": ["soviet", "classic"],
+    "url": "https://www.w3schools.com/html/mov_bbb.mp4"
+  },
+  {
+    "id": "m13",
+    "type": "movie",
+    "title": "Кошмар перед Рождеством",
+    "year": 1993,
+    "moods": ["cozy", "funny"],
+    "tags": ["animation", "classic"],
+    "url": "https://www.w3schools.com/html/mov_bbb.mp4"
+  },
+  {
+    "id": "m14",
+    "type": "movie",
+    "title": "Четыре Рождества",
+    "year": 2008,
+    "moods": ["funny", "family"],
+    "tags": ["comedy"],
+    "url": "https://www.w3schools.com/html/mov_bbb.mp4"
+  },
+
+  {
+    "id": "s1",
+    "type": "song",
+    "title": "Jingle Bell Rock",
+    "artist": "Bobby Helms",
+    "moods": ["funny", "upbeat"],
+    "tags": ["christmas"],
+    "url": "https://www.w3schools.com/html/horse.mp3"
+  },
+  {
+    "id": "s2",
+    "type": "song",
+    "title": "Last Christmas",
+    "artist": "Wham!",
+    "moods": ["romantic", "nostalgic"],
+    "tags": ["christmas"],
+    "url": "https://www.w3schools.com/html/horse.mp3"
+  },
+  {
+    "id": "s3",
+    "type": "song",
+    "title": "Let It Snow",
+    "artist": "Dean Martin",
+    "moods": ["cozy", "nostalgic"],
+    "tags": ["christmas"],
+    "url": "https://www.w3schools.com/html/horse.mp3"
+  },
+  {
+    "id": "s4",
+    "type": "song",
+    "title": "All I Want for Christmas Is You",
+    "artist": "Mariah Carey",
+    "moods": ["romantic", "upbeat"],
+    "tags": ["christmas"],
+    "url": "https://www.w3schools.com/html/horse.mp3"
+  },
+  {
+    "id": "s5",
+    "type": "song",
+    "title": "White Christmas",
+    "artist": "Bing Crosby",
+    "moods": ["nostalgic", "cozy"],
+    "tags": ["classic"],
+    "url": "https://www.w3schools.com/html/horse.mp3"
+  },
+  {
+    "id": "s6",
+    "type": "song",
+    "title": "Rockin' Around the Christmas Tree",
+    "artist": "Brenda Lee",
+    "moods": ["funny", "upbeat"],
+    "tags": ["christmas"],
+    "url": "https://www.w3schools.com/html/horse.mp3"
+  },
+  {
+    "id": "s7",
+    "type": "song",
+    "title": "Feliz Navidad",
+    "artist": "José Feliciano",
+    "moods": ["funny", "upbeat"],
+    "tags": ["christmas"],
+    "url": "https://www.w3schools.com/html/horse.mp3"
+  },
+  {
+    "id": "s8",
+    "type": "song",
+    "title": "Happy Xmas (War Is Over)",
+    "artist": "John Lennon",
+    "moods": ["cozy", "nostalgic"],
+    "tags": ["classic"],
+    "url": "https://www.w3schools.com/html/horse.mp3"
+  },
+  {
+    "id": "s9",
+    "type": "song",
+    "title": "В лесу родилась ёлочка",
+    "artist": "Детский хор",
+    "moods": ["family", "nostalgic"],
+    "tags": ["soviet", "children"],
+    "url": "https://www.w3schools.com/html/horse.mp3"
+  },
+  {
+    "id": "s10",
+    "type": "song",
+    "title": "Пять минут",
+    "artist": "Людмила Гурченко",
+    "moods": ["nostalgic", "funny"],
+    "tags": ["soviet", "classic"],
+    "url": "https://www.w3schools.com/html/horse.mp3"
+  },
+  {
+    "id": "s11",
+    "type": "song",
+    "title": "Снежинка",
+    "artist": "Валентина Толкунова",
+    "moods": ["cozy", "nostalgic"],
+    "tags": ["soviet"],
+    "url": "https://www.w3schools.com/html/horse.mp3"
+  },
+  {
+    "id": "s12",
+    "type": "song",
+    "title": "Новогодняя",
+    "artist": "Верка Сердючка",
+    "moods": ["funny", "upbeat"],
+    "tags": ["pop"],
+    "url": "https://www.w3schools.com/html/horse.mp3"
+  },
+  {
+    "id": "s13",
+    "type": "song",
+    "title": "Christmas Lights",
+    "artist": "Coldplay",
+    "moods": ["cozy", "romantic"],
+    "tags": ["pop", "rock"],
+    "url": "https://www.w3schools.com/html/horse.mp3"
+  },
+  {
+    "id": "s14",
+    "type": "song",
+    "title": "Santa Tell Me",
+    "artist": "Ariana Grande",
+    "moods": ["upbeat", "romantic"],
+    "tags": ["pop"],
+    "url": "https://www.w3schools.com/html/horse.mp3"
+  },
+
+  {
+    "id": "b1",
+    "type": "book",
+    "title": "Ночь перед Рождеством",
+    "author": "Н. В. Гоголь",
+    "moods": ["cozy", "nostalgic"],
+    "tags": ["classic", "russian"],
+    "url": "https://ilibrary.ru/text/89/p.1/index.html"
+  },
+  {
+    "id": "b2",
+    "type": "book",
+    "title": "Рождественская песнь",
+    "author": "Чарльз Диккенс",
+    "moods": ["cozy", "classic"],
+    "tags": ["classic"],
+    "url": "https://ilibrary.ru/text/1354/p.1/index.html"
+  },
+  {
+    "id": "b3",
+    "type": "book",
+    "title": "Щелкунчик и Мышиный король",
+    "author": "Э. Т. А. Гофман",
+    "moods": ["family", "cozy"],
+    "tags": ["classic", "fairy-tale"],
+    "url": "https://ilibrary.ru/text/784/p.1/index.html"
+  },
+  {
+    "id": "b4",
+    "type": "book",
+    "title": "Девочка со спичками",
+    "author": "Г. Х. Андерсен",
+    "moods": ["cozy", "nostalgic"],
+    "tags": ["classic", "fairy-tale"],
+    "url": "https://ilibrary.ru/text/1269/p.1/index.html"
+  },
+  {
+    "id": "b5",
+    "type": "book",
+    "title": "Дары волхвов",
+    "author": "О. Генри",
+    "moods": ["romantic", "cozy"],
+    "tags": ["classic"],
+    "url": "https://ilibrary.ru/text/1312/p.1/index.html"
+  },
+  {
+    "id": "b6",
+    "type": "book",
+    "title": "Снежная королева",
+    "author": "Г. Х. Андерсен",
+    "moods": ["family", "cozy"],
+    "tags": ["fairy-tale"],
+    "url": "https://ilibrary.ru/text/1270/p.1/index.html"
+  },
+  {
+    "id": "b7",
+    "type": "book",
+    "title": "Морозко",
+    "author": "Русская народная сказка",
+    "moods": ["family", "nostalgic"],
+    "tags": ["folklore"],
+    "url": "https://ilibrary.ru/text/1232/p.1/index.html"
+  },
+  {
+    "id": "b8",
+    "type": "book",
+    "title": "Серебряные коньки",
+    "author": "Мэри Мейп Додж",
+    "moods": ["cozy", "family"],
+    "tags": ["classic", "children"],
+    "url": "https://ilibrary.ru/text/1..."
+  },
+  {
+    "id": "b9",
+    "type": "book",
+    "title": "Двенадцать месяцев",
+    "author": "С. Я. Маршак",
+    "moods": ["family", "nostalgic"],
+    "tags": ["soviet", "fairy-tale"],
+    "url": "https://ilibrary.ru/text/9..."
+  },
+  {
+    "id": "b10",
+    "type": "book",
+    "title": "Путешествие Голубой Стрелы",
+    "author": "Джанни Родари",
+    "moods": ["family", "cozy"],
+    "tags": ["fairy-tale", "children"],
+    "url": "https://ilibrary.ru/text/1..."
+  },
+  {
+    "id": "b11",
+    "type": "book",
+    "title": "Письма Рождественского Деда",
+    "author": "Дж. Р. Р. Толкин",
+    "moods": ["cozy", "family"],
+    "tags": ["classic"],
+    "url": "https://ilibrary.ru/text/1..."
+  },
+  {
+    "id": "b12",
+    "type": "book",
+    "title": "Рождество в Лондоне",
+    "author": "Чарльз Диккенс",
+    "moods": ["nostalgic", "cozy"],
+    "tags": ["classic"],
+    "url": "https://ilibrary.ru/text/1..."
+  }
+]

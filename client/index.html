@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🎄Ёлка</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0a0e14">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Ёлка">
+  <link rel="apple-touch-icon" href="/assets/лого.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Marmelad&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <canvas id="snow"></canvas>
+
+  <!-- Шапка -->
+  <header>
+    <div class="logo">
+      <span class="logo-icon">🎄</span>
+      <div>
+        <h1 data-i18n="app.title">Ёлка</h1>
+        <span class="logo-sub" data-i18n="app.subtitle">новогодний портал</span>
+      </div>
+    </div>
+
+    <!-- Поиск -->
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input
+        type="text"
+        id="searchInput"
+        class="search-input"
+        placeholder="Поиск фильмов, песен, книг…"
+        data-i18n-placeholder="search.placeholder"
+        autocomplete="off"
+      >
+      <button id="searchClear" class="search-clear" hidden aria-label="Очистить">✕</button>
+    </div>
+
+    <!-- Обратный отсчёт до Нового года -->
+    <div id="countdown" class="countdown" aria-label="До Нового года">
+      <span class="countdown-label" data-i18n="countdown.label">До Нового года</span>
+      <div class="countdown-digits">
+        <div class="cd-item"><span id="cd-days">--</span><small data-i18n="countdown.days">дней</small></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-item"><span id="cd-hours">--</span><small data-i18n="countdown.hours">часов</small></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-item"><span id="cd-mins">--</span><small data-i18n="countdown.mins">минут</small></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-item"><span id="cd-secs">--</span><small data-i18n="countdown.secs">секунд</small></div>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <button id="randomBtn" title="Случайная игрушка"><span data-i18n="btn.random">🎲 Случайная</span></button>
+      <button id="shareBtn"><span data-i18n="btn.share">🔗 Поделиться</span></button>
+      <button id="themeBtn" title="Сменить тему" data-i18n-title="btn.theme.tooltip" aria-label="Сменить тему">🌙</button>
+      <button id="langBtn" title="Change language" data-i18n-title="btn.lang.tooltip" aria-label="Change language">RU</button>    
+      <button id="statsBtn" title="Статистика" data-i18n-title="btn.stats.tooltip" aria-label="Статистика">📊</button>
+      <button id="achieveBtn" title="Достижения" data-i18n-title="btn.achieve.tooltip" aria-label="Достижения">🏆</button>
+      <button id="profileBtn" title="Профиль" data-i18n-title="btn.profile.tooltip" aria-label="Профиль">👤</button>
+    </div>
+  </header>
+
+  <!-- Основной контент -->
+  <main>
+    <!-- Ёлка слева -->
+    <section id="treeSection">
+      <div id="treeWrap">
+        <img id="treePhoto" src="/assets/elka.png" alt="Ёлка">
+        <!-- Слой игрушек -->
+        <div id="ornamentsLayer"></div>
+      </div>
+      <!-- Кот лежит под ёлкой (перед ёлкой и шарами) -->
+      <img class="cat-under-tree" src="/assets/kot_лежа_на_спине.png" alt="">
+    </section>
+
+    <!-- Панель справа -->
+    <aside id="panel">
+      <div class="panel-header">
+        <h2 id="panelTitle" data-i18n="panel.recommendations">✨ Вам может понравиться</h2>
+        <button id="panelBack" hidden data-i18n="panel.back">← Назад</button>
+      </div>
+      <div id="panelGrid" class="cards-grid"></div>
+    </aside>
+  </main>
+
+    <!-- Нижняя навигация с перекатывающейся волной -->
+  <nav id="bottomNav">
+    <div class="nav-pill" id="navPill">
+      <button data-nav="home" class="nav-btn active">
+        <span class="nav-icon">🏠</span>
+        <span class="nav-label" data-i18n="nav.home">Главная</span>
+      </button>
+      <button data-nav="cozy" class="nav-btn">
+        <span class="nav-icon">☕</span>
+        <span class="nav-label" data-i18n="nav.cozy">Уютное</span>
+      </button>
+      <button data-nav="movie" class="nav-btn">
+        <span class="nav-icon">🎬</span>
+        <span class="nav-label" data-i18n="nav.movie">Фильмы</span>
+      </button>
+      <button data-nav="song" class="nav-btn">
+        <span class="nav-icon">🎵</span>
+        <span class="nav-label" data-i18n="nav.song">Песни</span>
+      </button>
+      <button data-nav="book" class="nav-btn">
+        <span class="nav-icon">📖</span>
+        <span class="nav-label" data-i18n="nav.book">Книги</span>
+      </button>
+      <button data-nav="funny" class="nav-btn">
+        <span class="nav-icon">😄</span>
+        <span class="nav-label" data-i18n="nav.funny">Весёлое</span>
+      </button>
+      <button data-nav="nostalgic" class="nav-btn">
+        <span class="nav-icon">🕰️</span>
+        <span class="nav-label" data-i18n="nav.nostalgic">Ностальгия</span>
+      </button>
+    </div>
+
+    <!-- Круглая подложка активной вкладки (двигается над пилюлей) -->
+    <div class="nav-bubble" id="navBubble">
+      <span class="nav-bubble-icon" id="navBubbleIcon">🏠</span>
+    </div>
+  </nav>
+
+  <!-- Кот-помощник в углу (кликабельный) -->
+  <div id="helperCat" class="helper-cat" title="Помощник">
+    <div class="cat-glow"></div>
+    <img src="/assets/кот_сидя_три_четверти.png" alt="Кот-помощник">
+  </div>
+
+  <!-- Модальное окно достижений -->
+  <div id="achieveModal" hidden>
+    <div class="modal-backdrop" data-close-achieve></div>
+    <div class="stats-content">
+      <button id="closeAchieve" aria-label="Закрыть">✕</button>
+      <h2 class="stats-title" data-i18n="achieve.title">🏆 Достижения</h2>
+      <div id="achieveBody" class="achieve-body">
+        <!-- Заполняется из JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Модальное окно профиля -->
+  <!-- Модальное окно профиля -->
+  <div id="profileModal" hidden>
+    <div class="modal-backdrop" data-close-profile></div>
+    <div class="stats-content profile-content">
+      <button id="closeProfile" aria-label="Закрыть">✕</button>
+      <h2 class="stats-title" data-i18n="profile.title">👤 Профиль</h2>
+
+      <!-- Форма входа (если не залогинен) -->
+      <div id="profileLogin" class="profile-login">
+        <p class="profile-hint" data-i18n="profile.hint">
+          Введи своё имя, чтобы использовать профиль, добавлять друзей и создавать группы.
+        </p>
+        <input
+          type="text"
+          id="profileNameInput"
+          class="profile-input"
+          placeholder="Твоё имя…"
+          data-i18n-placeholder="profile.namePlaceholder"
+          maxlength="30"
+        >
+        <button id="profileLoginBtn" class="profile-btn" data-i18n="profile.login">Войти</button>
+      </div>
+
+      <!-- Информация о профиле (если залогинен) -->
+      <div id="profileInfo" class="profile-info" hidden>
+        <div class="profile-avatar">👤</div>
+        <div class="profile-name" id="profileName"></div>
+        <div class="profile-since" id="profileSince"></div>
+      </div>
+
+      <!-- Друзья (видны когда залогинен) -->
+      <div id="friendsSection" class="friends-section" hidden>
+        <div class="friends-header">
+          <h3 data-i18n="friends.title">👥 Друзья</h3>
+          <button id="addFriendBtn" class="friends-add-btn" data-i18n="friends.add">+ Добавить</button>
+        </div>
+
+        <!-- Форма добавления друга (скрыта) -->
+        <div id="addFriendForm" class="add-friend-form" hidden>
+          <input
+            type="text"
+            id="friendNameInput"
+            class="profile-input"
+            placeholder="Имя друга…"
+            data-i18n-placeholder="friends.namePlaceholder"
+            maxlength="30"
+          >
+          <div class="add-friend-buttons">
+            <button id="addFriendConfirm" class="profile-btn" data-i18n="friends.confirm">Добавить</button>
+            <button id="addFriendCancel" class="profile-btn profile-btn-danger" data-i18n="friends.cancel">Отмена</button>
+          </div>
+        </div>
+
+        <!-- Список друзей -->
+        <ul id="friendsList" class="friends-list"></ul>
+
+        <!-- Пустое состояние -->
+        <div id="friendsEmpty" class="friends-empty" data-i18n="friends.empty">
+          Пока нет друзей. Добавь кого-нибудь!
+        </div>
+      </div>
+
+      <!-- Группы (видны когда залогинен) -->
+      <div id="groupsSection" class="groups-section" hidden>
+        <div class="friends-header">
+          <h3 data-i18n="groups.title">🎁 Группы</h3>
+          <button id="createGroupBtn" class="friends-add-btn" data-i18n="groups.create">+ Создать</button>
+        </div>
+
+        <!-- Форма создания группы -->
+        <div id="createGroupForm" class="add-friend-form" hidden>
+          <input
+            type="text"
+            id="groupNameInput"
+            class="profile-input"
+            placeholder="Название группы…"
+            data-i18n-placeholder="groups.namePlaceholder"
+            maxlength="40"
+          >
+
+          <div class="group-members-picker">
+            <div class="group-members-label" data-i18n="groups.members">Участники:</div>
+            <div id="groupMembersPicker" class="group-members-list"></div>
+          </div>
+
+          <div class="add-friend-buttons">
+            <button id="createGroupConfirm" class="profile-btn" data-i18n="groups.confirm">Создать</button>
+            <button id="createGroupCancel" class="profile-btn profile-btn-danger" data-i18n="groups.cancel">Отмена</button>
+          </div>
+        </div>
+
+        <!-- Список групп -->
+        <ul id="groupsList" class="friends-list"></ul>
+
+        <!-- Пустое состояние -->
+        <div id="groupsEmpty" class="friends-empty" data-i18n="groups.empty">
+          Пока нет групп. Создай первую!
+        </div>
+      </div>
+
+      <button id="profileLogoutBtn" class="profile-btn profile-btn-danger" data-i18n="profile.logout" hidden>Выйти</button>
+    </div>
+  </div>
+
+  <!-- Модальное окно статистики -->
+  <div id="statsModal" hidden>
+    <div class="modal-backdrop" data-close-stats></div>
+    <div class="stats-content">
+      <button id="closeStats" aria-label="Закрыть">✕</button>
+      <h2 class="stats-title" data-i18n="stats.title">📊 Твоя новогодняя статистика</h2>
+
+      <div id="statsBody" class="stats-body">
+        <!-- Заполняется из JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Окно чата в комнате -->
+  <div id="chatBox" class="chat-box" hidden>
+    <div class="chat-header">
+      <span class="chat-title">💬 Чат комнаты</span>
+      <span class="chat-count" id="chatCount"></span>
+      <button id="chatToggle" class="chat-toggle" aria-label="Свернуть">−</button>
+    </div>
+    <div class="chat-body" id="chatBody"></div>
+    <form class="chat-form" id="chatForm">
+      <input
+        type="text"
+        id="chatInput"
+        class="chat-input"
+        placeholder="Написать…"
+        data-i18n-placeholder="chat.placeholder"
+        maxlength="500"
+        autocomplete="off"
+      >
+      <button type="submit" class="chat-send" aria-label="Отправить">➤</button>
+    </form>
+  </div>
+
+  <!-- Модальное окно группы -->
+  <div id="groupModal" hidden>
+    <div class="modal-backdrop" data-close-group></div>
+    <div class="stats-content group-content">
+      <button id="closeGroup" aria-label="Закрыть">✕</button>
+      <h2 class="stats-title" id="groupTitle">🎁 Группа</h2>
+      <div class="group-meta" id="groupMeta"></div>
+
+      <div class="group-body">
+        <!-- Участники -->
+        <div class="group-block">
+          <div class="stats-block-title" data-i18n="groups.membersTitle">👥 Участники</div>
+          <ul id="groupMembersList" class="group-members-view"></ul>
+        </div>
+
+        <!-- Плейлист группы -->
+        <div class="group-block">
+          <div class="stats-block-title" data-i18n="groups.playlistTitle">🎵 Общий плейлист</div>
+          <ul id="groupPlaylist" class="group-playlist"></ul>
+          <div id="groupPlaylistEmpty" class="friends-empty" data-i18n="groups.playlistEmpty">
+            Плейлист пуст. Добавь что-нибудь из ёлки!
+          </div>
+          <button id="groupAddFromTree" class="profile-btn" data-i18n="groups.addFromTree">＋ Добавить из каталога</button>
+        </div>
+
+        <!-- Приглашение -->
+        <div class="group-block">
+          <div class="stats-block-title" data-i18n="groups.inviteTitle">🔗 Пригласить</div>
+          <button id="groupInviteBtn" class="profile-btn" data-i18n="groups.inviteBtn">Скопировать ссылку-приглашение</button>
+        </div>
+
+        <!-- Удаление -->
+        <div class="group-block">
+          <button id="groupDeleteBtn" class="profile-btn profile-btn-danger" data-i18n="groups.delete">Удалить группу</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модальное окно -->
+  <div id="modal" hidden>
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+      <button id="closeModal" aria-label="Закрыть">✕</button>
+      <div class="modal-header">
+        <span id="modalIcon">🎬</span>
+        <div>
+          <h2 id="modalTitle"></h2>
+          <p id="modalMeta"></p>
+        </div>
+      </div>
+      <div id="playerArea"></div>
+
+      <!-- QR и поделиться -->
+      <div id="modalShare" class="modal-share" hidden>
+        <div class="modal-share-qr" id="modalQR"></div>
+        <div class="modal-share-actions">
+          <p class="modal-share-hint" data-i18n="share.qrHint">📱 Открой на телефоне — наведи камеру на QR-код</p>
+          <button id="modalCopyBtn" class="profile-btn" data-i18n="share.copyLink">📋 Скопировать ссылку</button>
+          <button id="modalDownloadBtn" class="profile-btn profile-btn-danger" data-i18n="share.downloadCard">📸 Скачать карточку</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/snow.js" type="module"></script>
+  <script src="/js/cats.js" type="module"></script>
+  <script src="/js/tree-photo.js" type="module"></script>
+  <script src="/js/app.js" type="module"></script>
+</body>
+</html>
