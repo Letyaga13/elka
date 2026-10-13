@@ -6,10 +6,10 @@ const canvas = document.getElementById("snow");
 
 if (canvas) {
   // На мобильных и планшетах снег НЕ запускаем
-  const isMobile =
-    window.innerWidth < 600 ||
-    /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-
+const isMobile =
+  window.innerWidth < 900 ||
+  /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  
   if (isMobile) {
     console.log("❄️ Снег отключён на мобильных");
     canvas.style.display = "none";
