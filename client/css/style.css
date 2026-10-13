@@ -2824,15 +2824,46 @@ body.light .modal-share-qr {
     z-index: 20;
   }
 
-  /* ---------- КОТЫ НА КАРТОЧКАХ — МЕНЬШЕ ---------- */
+  /* ---------- КОТЫ НА ПАНЕЛИ — МЕНЬШЕ И БЕЗ СВЕЧЕНИЯ ---------- */
+
+  /* Внутренний слой — уменьшаем ВСЁ, что связано с котом */
+  .panel-cat-wrap {
+    top: -25px !important;
+  }
+
+  /* Сам кот — МЕНЬШЕ */
+  .panel-cat,
   .card-cat {
     width: 65px !important;
-    top: -40px !important;
+    height: auto !important;
   }
-  .cat-glow {
-    width: 80px !important;
-    height: 80px !important;
-    top: -45px !important;
+
+  /* Свечение — МЕНЬШЕ И БЕЗ СМЕЩЕНИЯ */
+  .cat-glow,
+  .panel-cat-wrap .cat-glow {
+    width: 70px !important;
+    height: 70px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+  }
+
+  /* Правое свечение — не выходит за карточку */
+  .panel-cat-wrap.right .cat-glow,
+  .cat-glow.right {
+    right: 0 !important;
+    left: auto !important;
+  }
+
+  /* Левое свечение — симметрично */
+  .panel-cat-wrap.left .cat-glow,
+  .cat-glow.left {
+    left: 0 !important;
+    right: auto !important;
+  }
+
+  /* На карточках котов вообще убираем, если они мешают */
+  .card-cat {
+    display: none !important;
   }
 
   /* ---------- КОТ ПОД ЁЛКОЙ — БЕЗ АНИМАЦИИ ---------- */
