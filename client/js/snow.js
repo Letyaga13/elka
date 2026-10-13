@@ -4,7 +4,11 @@ const ctx = canvas.getContext("2d");
 
 let W, H;
 const flakes = [];
-const FLAKE_COUNT = 120;
+
+// На мобильных меньше снежинок, чтобы не тормозило
+const isMobile = window.innerWidth < 768 ||
+                 /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+const FLAKE_COUNT = isMobile ? 30 : 120;
 
 function resize() {
   W = canvas.width = window.innerWidth;

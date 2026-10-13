@@ -456,6 +456,14 @@ function initServiceWorker() {
     return;
   }
 
+  // На мобильных НЕ регистрируем SW (тормозит)
+  const isMobile = window.innerWidth < 768 ||
+                   /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  if (isMobile) {
+    console.log("Service Worker отключён на мобильных");
+    return;
+  }
+
   window.addEventListener("load", () => {
     navigator.serviceWorker
       .register("/service-worker.js")

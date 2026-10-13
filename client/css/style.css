@@ -2570,3 +2570,47 @@ body.light .modal-share-qr {
   background: #ffffff;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
+
+/* ============================================================
+   ОПТИМИЗАЦИЯ ДЛЯ МОБИЛЬНЫХ
+   ============================================================ */
+@media (max-width: 768px) {
+  .garland-bulb {
+    animation-duration: 5s;
+  }
+
+  .cat-under-tree,
+  .helper-cat,
+  .panel-cat,
+  .card-cat {
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5)) !important;
+  }
+
+  .ornament-spot {
+    filter: none;
+  }
+
+  .logo-icon {
+    animation: none;
+  }
+
+  #snow {
+    opacity: 0.7;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  #snow {
+    display: none;
+  }
+
+  .garland-lights {
+    display: none;
+  }
+}
