@@ -457,7 +457,7 @@ function initServiceWorker() {
   }
 
   // На мобильных НЕ регистрируем SW (тормозит)
-  const isMobile = window.innerWidth < 768 ||
+  const isMobile = window.innerWidth < 900 ||
                    /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
   if (isMobile) {
     console.log("Service Worker отключён на мобильных");

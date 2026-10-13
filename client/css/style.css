@@ -2574,43 +2574,113 @@ body.light .modal-share-qr {
 /* ============================================================
    ОПТИМИЗАЦИЯ ДЛЯ МОБИЛЬНЫХ
    ============================================================ */
-@media (max-width: 768px) {
-  .garland-bulb {
-    animation-duration: 5s;
-  }
-
+@media (max-width: 900px) {
+  /* 1. Отключаем ВСЕ drop-shadow — очень тяжёлые на GPU */
   .cat-under-tree,
   .helper-cat,
   .panel-cat,
-  .card-cat {
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5)) !important;
+  .card-cat,
+  .cat-glow,
+  .logo-icon,
+  .ornament-spot,
+  .card-ball,
+  .nav-bubble {
+    filter: none !important;
   }
 
-  .ornament-spot {
-    filter: none;
+  /* 2. Отключаем backdrop-filter — тоже тяжёлый */
+  header,
+  .nav-pill,
+  .modal-content,
+  .stats-content,
+  .chat-box,
+  .glass,
+  .search-wrap,
+  .countdown {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
   }
 
-  .logo-icon {
-    animation: none;
+  /* 3. Упрощаем тени — вместо больших blur делаем маленькие */
+  .card,
+  .nav-pill,
+  .countdown,
+  .search-wrap {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
   }
 
+  /* 4. Снег — уменьшаем до 30% и отключаем свечение */
   #snow {
-    opacity: 0.7;
+    opacity: 0.4;
+  }
+
+  /* 5. Гирлянда — отключаем анимацию мерцания (статичные точки) */
+  .garland-bulb {
+    animation: none !important;
+    opacity: 0.9;
+    box-shadow:
+      0 0 4px var(--bulb-glow),
+      0 0 8px var(--bulb-glow) !important;
+  }
+
+  /* 6. Отключаем тяжёлые декоративные анимации */
+  .logo-icon,
+  .helper-cat,
+  .cat-under-tree,
+  .nav-bubble {
+    animation: none !important;
+  }
+
+  /* 7. Убираем transition на theme — он тяжёлый */
+  body, body * {
+    transition: none !important;
+  }
+
+  /* 8. Убираем свечения у игрушек при ховере */
+  .ornament-spot:hover {
+    transform: translate(-50%, -50%) scale(1.25) !important;
+    filter: none !important;
+  }
+
+  /* 9. Карточки — упрощаем hover */
+  .card:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  /* 10. Свечение внизу ёлки */
+  #treeWrap::after {
+    display: none;
   }
 }
 
+/* Отдельно для ОЧЕНЬ узких экранов — вообще всё упростить */
+@media (max-width: 600px) {
+  /* Снег полностью выключаем */
+  #snow {
+    display: none !important;
+  }
+
+  /* Гирлянда — только точки, без анимации */
+  .garland-bulb {
+    animation: none !important;
+    opacity: 0.85;
+    box-shadow: 0 0 4px var(--bulb-glow) !important;
+  }
+
+  /* Пузырь навигации — убираем свечение */
+  .nav-bubble {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5) !important;
+  }
+}
+
+/* Если пользователь включил "уменьшить движение" в настройках телефона */
 @media (prefers-reduced-motion: reduce) {
   * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    animation: none !important;
+    transition: none !important;
   }
-
-  #snow {
-    display: none;
-  }
-
-  .garland-lights {
-    display: none;
+  #snow, .garland-lights {
+    display: none !important;
   }
 }
