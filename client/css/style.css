@@ -2572,17 +2572,182 @@ body.light .modal-share-qr {
 }
 
 /* ============================================================
-   МОБИЛЬНАЯ ВЕРСИЯ — ЛЁГКИЕ АНИМАЦИИ v2
+   МОБИЛЬНАЯ ВЕРСИЯ — ФИНАЛЬНАЯ
+   ============================================================ */
+
+/* Кнопка-гамбургер — скрыта по умолчанию */
+.mobile-menu-btn {
+  display: none;
+}
+
+/* Мобильное меню — скрыто по умолчанию */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  display: flex;
+  justify-content: flex-end;
+}
+.mobile-menu[hidden] { display: none; }
+
+.mobile-menu-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 8, 12, 0.7);
+  animation: fadeIn 0.2s ease;
+}
+
+.mobile-menu-panel {
+  position: relative;
+  width: 33%;
+  min-width: 260px;
+  max-width: 340px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--bg-700), var(--bg-800));
+  border-left: 1px solid rgba(212, 165, 69, 0.35);
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.6);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  animation: mobileMenuSlideIn 0.3s cubic-bezier(0.34, 1.2, 0.64, 1);
+  overflow-y: auto;
+}
+@keyframes mobileMenuSlideIn {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+
+.mobile-menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.4rem 0.6rem 0.9rem;
+  border-bottom: 1px solid rgba(212, 165, 69, 0.2);
+  margin-bottom: 0.6rem;
+}
+
+.mobile-menu-title {
+  font-family: 'Marmelad', sans-serif;
+  font-size: 1rem;
+  color: var(--gold-300);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  -webkit-text-stroke: 0.4px var(--gold-300);
+}
+
+.mobile-menu-close {
+  background: transparent;
+  border: none;
+  color: var(--white-soft);
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+.mobile-menu-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.mobile-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.8rem 0.9rem;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  color: var(--white-soft);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%;
+}
+.mobile-menu-item:hover,
+.mobile-menu-item:active {
+  background: rgba(212, 165, 69, 0.12);
+  border-color: rgba(212, 165, 69, 0.3);
+  color: var(--gold-300);
+  transform: translateX(-4px);
+}
+.mobile-menu-item span:first-child {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   ВСЯ МОБИЛЬНАЯ ЛОГИКА — только < 900px
    ============================================================ */
 @media (max-width: 900px) {
 
-  /* ---------- 1. Убираем всё тяжёлое ---------- */
+  /* ---------- ШАПКА ---------- */
+  /* Скрываем все кнопки кроме гамбургера */
+  .header-actions {
+    display: none !important;
+  }
+
+  .mobile-menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid rgba(212, 165, 69, 0.35);
+    background: rgba(212, 165, 69, 0.08);
+    color: var(--gold-300);
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: auto;
+    flex-shrink: 0;
+    transition: all 0.2s;
+  }
+  .mobile-menu-btn:active {
+    transform: scale(0.92);
+    background: rgba(212, 165, 69, 0.2);
+  }
+
+  /* Шапка в строку */
+  header {
+    flex-wrap: nowrap;
+    gap: 0.6rem;
+    padding: 0.8rem 1rem;
+    align-items: flex-start;
+  }
+
+  .logo-block {
+    flex-shrink: 0;
+  }
+
+  /* Поиск — по центру, растягивается */
+  .search-wrap {
+    flex: 1;
+    min-width: 100px;
+    max-width: none;
+    order: 0;
+  }
+
+  /* ---------- ЛОГОТИП И ЁЛКА — БЕЗ АНИМАЦИИ ---------- */
+  .logo-icon,
+  #treeWrap {
+    animation: none !important;
+  }
+
+  /* ---------- КОТ-ПОМОЩНИК — БЕЗ АНИМАЦИИ ---------- */
+  .helper-cat {
+    animation: none !important;
+  }
+
+  /* ---------- ТЯЖЁЛЫЕ ФИЛЬТРЫ УБИРАЕМ ---------- */
   .cat-under-tree,
   .helper-cat,
   .panel-cat,
   .card-cat,
   .cat-glow,
-  .logo-icon,
   .card-ball,
   .nav-bubble,
   .ornament-spot {
@@ -2596,145 +2761,148 @@ body.light .modal-share-qr {
   .stats-content,
   .chat-box,
   .glass,
-  .search-wrap,
-  .countdown {
+  .search-wrap {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
   }
 
   .card,
   .nav-pill,
-  .countdown,
   .search-wrap {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
   }
 
-  /* ---------- 2. Отключаем ТЯЖЁЛЫЕ старые анимации ---------- */
-  .logo-icon,
-  .helper-cat,
-  .cat-under-tree,
-  .nav-bubble,
-  #treeWrap {
-    animation: none !important;
+  /* ---------- СНЕГ — МАКСИМАЛЬНО ПРОСТОЙ (CSS, 3 снежинки) ---------- */
+  #snow {
+    display: none !important;   /* Canvas-снег полностью выключаем */
   }
 
-  /* ---------- 3. ЛЁГКИЕ АНИМАЦИИ ---------- */
+  /* Простые CSS-снежинки через псевдоэлементы */
+  body::before,
+  body::after {
+    content: '❄';
+    position: fixed;
+    top: -40px;
+    font-size: 16px;
+    color: rgba(240, 248, 255, 0.55);
+    pointer-events: none;
+    z-index: 2;
+    animation: mobileSnow1 14s linear infinite;
+    will-change: transform;
+  }
+  body::before { left: 15%; animation-delay: 0s; }
+  body::after  { left: 75%; animation-delay: 4s; font-size: 12px; }
 
-  /* ГИРЛЯНДА — мягкое мерцание через opacity (дёшево, но заметно) */
+  @keyframes mobileSnow1 {
+    0%   { transform: translateY(0) translateX(0); opacity: 0; }
+    10%  { opacity: 1; }
+    90%  { opacity: 1; }
+    100% { transform: translateY(110vh) translateX(30px); opacity: 0; }
+  }
+
+  /* ---------- ГИРЛЯНДА — ТОЛЬКО OPACITY (дешевле некуда) ---------- */
   .garland-bulb {
-    animation: mobileBulbGlow 2.5s ease-in-out infinite !important;
-    opacity: 1;
-    box-shadow: 0 0 6px var(--bulb-glow) !important;
+    animation: mobileBulbGlow 3s ease-in-out infinite !important;
+    box-shadow: 0 0 4px var(--bulb-glow) !important;
     will-change: opacity;
   }
 
-  /* Игрушки — лёгкая пульсация */
+  @keyframes mobileBulbGlow {
+    0%, 100% { opacity: 0.4; }
+    50%      { opacity: 1; }
+  }
+
+  /* ---------- ШАРЫ: РЕАКЦИЯ НА ТАП/НАЖАТИЕ ---------- */
   .ornament-spot {
-    animation: mobileOrnamentPulse 3s ease-in-out infinite !important;
-    will-change: transform;
+    transition: transform 0.15s ease-out !important;
+    animation: none !important;   /* убираем пульсацию */
   }
 
-  /* Кот-помощник — мягкое парение */
-  .helper-cat {
-    animation: mobileCatFloat 4s ease-in-out infinite !important;
+  .ornament-spot:active,
+  .ornament-spot.tapped {
+    transform: translate(-50%, -50%) scale(1.35) !important;
+    z-index: 20;
   }
 
-  /* Кот у ёлки — лёгкое дыхание */
-  .cat-under-tree {
-    animation: mobileCatBreathe 5s ease-in-out infinite !important;
+  /* ---------- КОТЫ НА КАРТОЧКАХ — МЕНЬШЕ ---------- */
+  .card-cat {
+    width: 65px !important;
+    top: -40px !important;
+  }
+  .cat-glow {
+    width: 80px !important;
+    height: 80px !important;
+    top: -45px !important;
   }
 
-  /* Активная вкладка — пульсация */
-  .nav-btn.active {
-    animation: mobileNavPulse 2s ease-in-out infinite;
-  }
-
-  /* Обратный отсчёт — мерцание */
-  .cd-item span {
-    animation: mobileTwinkle 2.5s ease-in-out infinite;
-  }
-}
-
-/* ---------- КЛЮЧЕВЫЕ КАДРЫ ---------- */
-
-/* Гирлянда: 0% → 55% → 100% (самая дешёвая анимация — только opacity) */
-@keyframes mobileBulbGlow {
-  0%, 100% { opacity: 0.4; }
-  50%      { opacity: 1; }
-}
-
-/* Игрушки: мягкая пульсация */
-@keyframes mobileOrnamentPulse {
-  0%, 100% { transform: translate(-50%, -50%) scale(1); }
-  50%      { transform: translate(-50%, -50%) scale(1.06); }
-}
-
-/* Кот-помощник */
-@keyframes mobileCatFloat {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-4px); }
-}
-
-/* Кот под ёлкой */
-@keyframes mobileCatBreathe {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50%      { transform: translateX(-50%) translateY(-3px); }
-}
-
-/* Активная вкладка */
-@keyframes mobileNavPulse {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-2px); }
-}
-
-/* Цифры отсчёта */
-@keyframes mobileTwinkle {
-  0%, 100% { opacity: 1; }
-  50%      { opacity: 0.75; }
-}
-
-/* ============================================================
-   РЕАКЦИЯ НА НАЖАТИЕ (тап по игрушке)
-   ============================================================ */
-.ornament-spot:active,
-.ornament-spot.tapped {
-  transform: translate(-50%, -50%) scale(1.3) !important;
-  transition: transform 0.15s ease-out !important;
-  z-index: 20;
-}
-
-/* Кнопки — при тапе */
-.card:active,
-.nav-btn:active,
-.header-actions button:active {
-  transform: scale(0.95) !important;
-  transition: transform 0.1s;
-}
-
-/* ============================================================
-   ДЛЯ ОЧЕНЬ УЗКИХ ЭКРАНОВ (телефон)
-   ============================================================ */
-@media (max-width: 600px) {
-  /* Гирлянда — чуть медленнее, чтобы не мельтешила */
-  .garland-bulb {
-    animation-duration: 3s !important;
-  }
-
-  /* Кот у ёлки не дышит (экономия) */
+  /* ---------- КОТ ПОД ЁЛКОЙ — БЕЗ АНИМАЦИИ ---------- */
   .cat-under-tree {
     animation: none !important;
+    width: 60% !important;
   }
 
-  /* Игрушки пульсируют чуть медленнее */
-  .ornament-spot {
-    animation-duration: 4s !important;
+  /* ---------- КАРТОЧКИ — при тапе сжимаются ---------- */
+  .card:active {
+    transform: scale(0.98) !important;
+    transition: transform 0.1s;
+  }
+
+  /* ---------- Кнопки навигации ---------- */
+  .nav-btn:active {
+    transform: scale(0.94) !important;
+  }
+
+  /* Отключаем hover-эффекты на мобильных */
+  .card:hover,
+  .ornament-spot:hover,
+  .nav-btn:hover,
+  .friend-item:hover {
+    transform: none !important;
+    box-shadow: none !important;
   }
 }
 
-/* Если пользователь включил "уменьшить движение" — выключаем всё */
+/* ============================================================
+   ОЧЕНЬ УЗКИЕ ЭКРАНЫ (телефон < 600)
+   ============================================================ */
+@media (max-width: 600px) {
+  /* Одна снежинка вместо двух */
+  body::after {
+    display: none;
+  }
+
+  /* Гирлянда медленнее */
+  .garland-bulb {
+    animation-duration: 4s !important;
+  }
+
+  /* Кот-помощник меньше */
+  .helper-cat {
+    width: 70px !important;
+  }
+
+  /* Коты на карточках ещё меньше */
+  .card-cat {
+    width: 55px !important;
+    top: -35px !important;
+  }
+
+  /* Меню шире на телефоне (удобнее нажимать) */
+  .mobile-menu-panel {
+    width: 75%;
+    min-width: 0;
+    max-width: none;
+  }
+}
+
+/* Если пользователь включил "уменьшить движение" */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation: none !important;
     transition: none !important;
+  }
+  body::before,
+  body::after {
+    display: none !important;
   }
 }

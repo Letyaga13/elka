@@ -5,6 +5,7 @@ import { initLiquidNav } from "./nav.js";
 import { initLangSwitch, setLang, getLang, t } from "./i18n.js";
 import { initProfile, getProfile } from "./profile.js";
 import { shareCard } from "./share-card.js";
+import { initMobileMenu } from "./mobile-menu.js";
 import {
   initHelperCat,
   helperCatReact,
@@ -49,6 +50,7 @@ async function boot() {
   initAchievements();
   initProfile();
   initGroupCatalogHandler();
+  initMobileMenu();
 
   try {
     const res = await fetch("/api/content");

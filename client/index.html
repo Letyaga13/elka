@@ -60,12 +60,55 @@
       <button id="randomBtn" title="Случайная игрушка"><span data-i18n="btn.random">🎲 Случайная</span></button>
       <button id="shareBtn"><span data-i18n="btn.share">🔗 Поделиться</span></button>
       <button id="themeBtn" title="Сменить тему" data-i18n-title="btn.theme.tooltip" aria-label="Сменить тему">🌙</button>
-      <button id="langBtn" title="Change language" data-i18n-title="btn.lang.tooltip" aria-label="Change language">RU</button>    
+      <button id="langBtn" title="Change language" data-i18n-title="btn.lang.tooltip" aria-label="Change language">RU</button>
       <button id="statsBtn" title="Статистика" data-i18n-title="btn.stats.tooltip" aria-label="Статистика">📊</button>
       <button id="achieveBtn" title="Достижения" data-i18n-title="btn.achieve.tooltip" aria-label="Достижения">🏆</button>
       <button id="profileBtn" title="Профиль" data-i18n-title="btn.profile.tooltip" aria-label="Профиль">👤</button>
     </div>
+
+    <!-- Кнопка-гамбургер для мобильных -->
+    <button id="mobileMenuBtn" class="mobile-menu-btn" aria-label="Меню">⋮</button>
   </header>
+
+  <!-- Мобильное меню (выезжает справа) -->
+  <div id="mobileMenu" class="mobile-menu" hidden>
+    <div class="mobile-menu-backdrop" data-close-mobile-menu></div>
+    <nav class="mobile-menu-panel">
+      <div class="mobile-menu-header">
+        <span class="mobile-menu-title" data-i18n="menu.title">Меню</span>
+        <button class="mobile-menu-close" data-close-mobile-menu aria-label="Закрыть">✕</button>
+      </div>
+
+      <button class="mobile-menu-item" data-action="profile">
+        <span>👤</span>
+        <span data-i18n="menu.profile">Аккаунт</span>
+      </button>
+      <button class="mobile-menu-item" data-action="theme">
+        <span>🌙</span>
+        <span data-i18n="menu.theme">Сменить тему</span>
+      </button>
+      <button class="mobile-menu-item" data-action="lang">
+        <span>🌐</span>
+        <span data-i18n="menu.lang">Сменить язык</span>
+      </button>
+      <button class="mobile-menu-item" data-action="stats">
+        <span>📊</span>
+        <span data-i18n="menu.stats">Статистика</span>
+      </button>
+      <button class="mobile-menu-item" data-action="achieve">
+        <span>🏆</span>
+        <span data-i18n="menu.achieve">Достижения</span>
+      </button>
+      <button class="mobile-menu-item" data-action="random">
+        <span>🎲</span>
+        <span data-i18n="menu.random">Случайная</span>
+      </button>
+      <button class="mobile-menu-item" data-action="share">
+        <span>🔗</span>
+        <span data-i18n="menu.share">Поделиться</span>
+      </button>
+    </nav>
+  </div>
 
   <!-- Основной контент -->
   <main>
