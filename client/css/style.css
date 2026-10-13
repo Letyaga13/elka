@@ -2828,7 +2828,7 @@ body.light .modal-share-qr {
 
   /* Внутренний слой — уменьшаем ВСЁ, что связано с котом */
   .panel-cat-wrap {
-    top: 150px !important;
+    top: 50px !important;
   }
 
   /* Сам кот — МЕНЬШЕ */
