@@ -97,7 +97,23 @@ export function renderOrnaments(content, onClick) {
     img.draggable = false;
     spot.appendChild(img);
 
-    spot.addEventListener("click", () => onClick(item.id));
+    // Реакция на клик/тап
+    spot.addEventListener("click", (e) => {
+      // Лёгкий эффект "нажатия"
+      spot.classList.add("tapped");
+      setTimeout(() => spot.classList.remove("tapped"), 200);
+      onClick(item.id);
+    });
+
+    // Для тач-устройств — реакция на touchstart
+    spot.addEventListener("touchstart", () => {
+      spot.classList.add("tapped");
+    }, { passive: true });
+
+    spot.addEventListener("touchend", () => {
+      setTimeout(() => spot.classList.remove("tapped"), 200);
+    }, { passive: true });
+
     spot.addEventListener("keydown", e => {
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
